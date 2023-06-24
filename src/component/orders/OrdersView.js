@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
 import OrderDetailBox from "./OrderDetailBox";
@@ -8,6 +8,7 @@ import { ordersViewById } from "./utils";
 import { useState } from "react";
 
 function OrdersView(props) {
+  const navigate = useNavigate();
   // Order Id
   const { orderId } = useParams();
   const [orders, setOrders] = useState([]);
@@ -146,7 +147,7 @@ function OrdersView(props) {
                   <button
                     type="button"
                     className="btn btn-success btn-login waves-effect waves-light mr-3"
-                    onClick={props.history.goBack}
+                    onClick={() => navigate("/orders")}
                   >
                     Back
                   </button>
