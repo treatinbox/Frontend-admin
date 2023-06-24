@@ -6,9 +6,8 @@ import { isAutheticated } from "./authHelper";
 // import { API_URl } from "../api";
 import swal from "sweetalert";
 import { useEffect } from "react";
+import { API_URl } from "../api";
 function Login(props) {
-  const API_URl = "http://localhost:5000";
-
   let history = useNavigate();
   const [user, setUser] = useState({
     email: "",
