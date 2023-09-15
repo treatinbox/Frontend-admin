@@ -25,6 +25,8 @@ import EmailTemplateEdit from "./component/emailTemplates/EmailTempalteEdit";
 import Product from "./component/Product/Product";
 import ProtectedRoute from "./component/auth/Protected";
 import PrivateRoute from "./component/auth/Protected";
+import FooterApplicationName from "./component/footerSetting/FootetApplicationName";
+import FooterCopyrights from "./component/footerSetting/FooterCopyright";
 
 function App() {
   return (
@@ -47,15 +49,14 @@ function App() {
           />
           <Route path="/demo/request" element={<DemoRequest />} />
           <Route path="/demo/request/view/:id" element={<DemoRequestView />} />
-          <Route path="/home/settings" element={<HomePageSettings />} />
           <Route path="/address" element={<FooterAddress />} />
           <Route path="/social" element={<FooterSocialMedia />} />
           <Route path="/logo" element={<FooterLogo />} />
           <Route path="/links" element={<FooterLinks />} />
+          <Route path="/application" element={<FooterApplicationName />} />
+          <Route path="/copyrights" element={<FooterCopyrights />} />
           <Route path="/payment/settings" element={<PaymentSettings />} />
           <Route path="/newsletter" element={<NewsLetters />} />
-          <Route path="/email-templates" element={<EmailTemplate />} />
-          <Route path="/email-templates/:id" element={<EmailTemplateEdit />} />
         </Route>
       </Routes>
     </Router>

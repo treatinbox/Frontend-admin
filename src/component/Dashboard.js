@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import { isAutheticated } from "./auth/authHelper";
+import axios from "axios";
+import { API_URl } from "./api";
 
 function Dashboard(props) {
+  const { token } = isAutheticated();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let res = await axios.get(`${API_URl}/admin/details`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setData(res.data?.data);
+    };
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <Sidebar />
@@ -35,7 +54,7 @@ function Dashboard(props) {
               <div className="col-md-6 col-xl-3">
                 <div className="card bg-success h-auto">
                   <div className="card-body dashboard-box">
-                    <h1 className="text-left">Videos</h1>
+                    <h1 className="text-left">Franchisees</h1>
                     <div className="float-left mt-2">
                       <img
                         src="assets/images/icons/videos-icon.png"
@@ -44,7 +63,7 @@ function Dashboard(props) {
                     </div>
                     <div className="float-right mt-2">
                       <h4 className="mb-1 mt-1 dash-counter">
-                        <span data-plugin="counterup">455</span>
+                        <span data-plugin="counterup">{data?.franchises}</span>
                       </h4>
                     </div>
                   </div>
@@ -55,7 +74,7 @@ function Dashboard(props) {
               <div className="col-md-6 col-xl-3">
                 <div className="card bg-info h-auto">
                   <div className="card-body dashboard-box">
-                    <h1 className="text-left">Viewers</h1>
+                    <h1 className="text-left">Products</h1>
                     <div className="float-left mt-2">
                       <img
                         src="assets/images/icons/viewers-count-icon.png"
@@ -64,7 +83,7 @@ function Dashboard(props) {
                     </div>
                     <div className="float-right mt-2">
                       <h4 className="mb-1 mt-1 dash-counter">
-                        <span data-plugin="counterup">2500</span>
+                        <span data-plugin="counterup">{data?.product}</span>
                       </h4>
                     </div>
                   </div>
@@ -75,7 +94,7 @@ function Dashboard(props) {
               <div className="col-md-6 col-xl-3">
                 <div className="card bg-primary h-auto">
                   <div className="card-body dashboard-box">
-                    <h1 className="text-left">Staff</h1>
+                    <h1 className="text-left">Orders</h1>
                     <div className="float-left mt-2">
                       <img
                         src="assets/images/icons/staff-icon.png"
@@ -84,7 +103,7 @@ function Dashboard(props) {
                     </div>
                     <div className="float-right mt-2">
                       <h4 className="mb-1 mt-1 dash-counter">
-                        <span data-plugin="counterup">5400</span>
+                        <span data-plugin="counterup">{data?.orders}</span>
                       </h4>
                     </div>
                   </div>
@@ -92,7 +111,7 @@ function Dashboard(props) {
               </div>
               {/*  <!-- end col--> */}
 
-              <div className="col-md-6 col-xl-3">
+              {/*  <div className="col-md-6 col-xl-3">
                 <div className="card bg-warning h-auto">
                   <div className="card-body dashboard-box">
                     <h1 className="text-left">Categories</h1>
@@ -109,7 +128,7 @@ function Dashboard(props) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/*  <!-- end col--> */}
             </div>
           </div>

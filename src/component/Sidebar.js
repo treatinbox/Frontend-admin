@@ -68,7 +68,7 @@ function Sidebar(props) {
                   src="/assets/images/icons/viewer-icon.png"
                   style={sideBar ? { width: 25 } : null}
                 />
-                {!sideBar && <span>Clients</span>}
+                {!sideBar && <span>Franchisees</span>}
               </NavLink>
             </li>
             <li>
@@ -132,26 +132,6 @@ function Sidebar(props) {
                 {!sideBar && <span>Demo Requests</span>}
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/home/settings">
-                <img
-                  alt="img"
-                  src="/assets/images/icons/log-icon.png "
-                  style={sideBar ? { width: 25 } : null}
-                />
-                {!sideBar && <span>Home Page Settings</span>}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/email-templates">
-                <img
-                  alt="img"
-                  src="/assets/images/icons/email-template-icon.png"
-                  style={sideBar ? { width: 25 } : null}
-                />
-                {!sideBar && <span>Email Templates</span>}
-              </NavLink>
-            </li>
 
             {!sideBar && (
               <li className="d-flex  justify-content-between">
@@ -172,7 +152,10 @@ function Sidebar(props) {
                       <NavLink to="/logo">Logo</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/NavLinks">NavLinks</NavLink>
+                      <NavLink to="/application">Application Name</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/copyrights">Copyright</NavLink>
                     </li>
                   </ul>
                 </div>
