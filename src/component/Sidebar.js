@@ -1,5 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { NavL, NavLink, NavLinkinkNavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { RiDashboardFill } from "react-icons/ri";
+import { SiIledefrancemobilites } from "react-icons/si";
+import { FaBorderStyle,FaProductHunt ,FaHackerNewsSquare,FaUserTag,FaRegCopyright} from "react-icons/fa";
+import { BiSolidContact,BiSolidRename} from "react-icons/bi";
+import { MdEmojiNature,MdAddReaction} from "react-icons/md";
+import { FcSettings} from "react-icons/fc";
+import { SlSocialDropbox} from "react-icons/sl";
+
 
 function Sidebar(props) {
   const [sideBar, setSideBar] = useState(false);
@@ -51,44 +59,28 @@ function Sidebar(props) {
         <div id="sidebar-menu">
           {/* <!-- Left Menu Start --> */}
           <ul className="metismenu list-unstyled" id="side-menu">
-            <li className="">
+            <li>
               <NavLink to="/dashboard">
-                <img
-                  alt="img"
-                  src="/assets/images/icons/dashboard-icon.png"
-                  style={sideBar ? { width: 25 } : null}
-                />
-                {!sideBar && <span>Dashboard</span>}
+                <RiDashboardFill size={20} />
+                {!sideBar && <span className="mx-2">Dashboard</span>}
               </NavLink>
             </li>
             <li>
               <NavLink to="/client">
-                <img
-                  alt="img"
-                  src="/assets/images/icons/viewer-icon.png"
-                  style={sideBar ? { width: 25 } : null}
-                />
-                {!sideBar && <span>Franchisees</span>}
+                <SiIledefrancemobilites size={20} />
+                {!sideBar && <span className="mx-2">Franchisees</span>}
               </NavLink>
             </li>
             <li>
               <NavLink to="/orders">
-                <img
-                  alt="img"
-                  src="/assets/images/icons/viewer-icon.png"
-                  style={sideBar ? { width: 25 } : null}
-                />
-                {!sideBar && <span>Orders</span>}
+                <FaBorderStyle size={20} />
+                {!sideBar && <span className="mx-2">Orders</span>}
               </NavLink>
             </li>
             <li>
               <NavLink to="/product">
-                <img
-                  alt="img"
-                  src="/assets/images/icons/viewer-icon.png"
-                  style={sideBar ? { width: 25 } : null}
-                />
-                {!sideBar && <span>Products</span>}
+                <FaProductHunt size={20} />
+                {!sideBar && <span className="mx-2">Products</span>}
               </NavLink>
             </li>
             {/* <li>
@@ -104,58 +96,70 @@ function Sidebar(props) {
                     </li> */}
             <li>
               <NavLink to="/newsletter">
-                <img
-                  alt="img"
-                  src="/assets/images/icons/log-icon.png"
-                  style={sideBar ? { width: 25 } : null}
-                />
-                {!sideBar && <span>Newsletter Subscribers</span>}
+                <FaHackerNewsSquare size={20} />
+                {!sideBar && (
+                  <span className="mx-2">Newsletter Subscribers</span>
+                )}
               </NavLink>
             </li>
             <li>
               <NavLink to="/contacts/request">
-                <img
-                  alt="img"
-                  src="/assets/images/icons/log-icon.png"
-                  style={sideBar ? { width: 25 } : null}
-                />
-                {!sideBar && <span>Contact Requests</span>}
+                <BiSolidContact size={20} />
+                {!sideBar && <span className="mx-2">Contact Requests</span>}
               </NavLink>
             </li>
             <li>
               <NavLink to="/demo/request">
-                <img
-                  alt="img"
-                  src="/assets/images/icons/log-icon.png"
-                  style={sideBar ? { width: 25 } : null}
-                />
-                {!sideBar && <span>Demo Requests</span>}
+                <MdEmojiNature size={20} />
+                {!sideBar && <span className="mx-2">Demo Requests</span>}
               </NavLink>
             </li>
 
             {!sideBar && (
-              <li className="d-flex  w-100 justify-content-between1">
+              <li className="d-flex w-100 justify-content-between1">
                 <div className="w-100 ">
                   <a>
-                    <img alt="img" src="/assets/images/icons/cms-icon.png" />
-                    <span className="">Footer Settings</span>
+                    <FcSettings size={20} />
+                    <span className="mx-2">Footer Settings</span>
                   </a>
 
-                  <ul className="sub-menu1 mx-3 display-menu1">
-                    <li>
-                      <NavLink to="/social">Social Media</NavLink>
+                  <ul
+                    className="sub-menu mx-3 display-menu"
+                    style={{ position: "relative", left: "-2em" }}
+                  >
+                    <li >
+                      <NavLink to="/social" style={{paddingLeft:"3em"}}>
+                        <SlSocialDropbox size={20} />
+
+                        <span className="mx-2">Social Media</span>
+                      </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/address">Address</NavLink>
+                      <NavLink to="/address" style={{paddingLeft:"3em"}}>
+                        <MdAddReaction size={20} />
+                        <span className="mx-2">Address</span>
+                      </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/logo">Logo</NavLink>
+                      <NavLink to="/logo" style={{paddingLeft:"3em"}}>
+                        <FaUserTag size={20} />
+
+                        <span className="mx-2">Logo</span>
+                      </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/application">Application Name</NavLink>
+                      <NavLink to="/application" style={{paddingLeft:"3em"}}>
+                        <BiSolidRename size={20} />
+
+                        <span className="mx-2">Application Name</span>
+                      </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/copyrights">Copyright</NavLink>
+                      <NavLink to="/copyrights" style={{paddingLeft:"3em"}}>
+                        <FaRegCopyright size={20} />
+
+                        <span className="mx-2">Copyright</span>
+                      </NavLink>
                     </li>
                   </ul>
                 </div>
