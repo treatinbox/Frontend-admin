@@ -7,11 +7,11 @@ function Sidebar(props) {
   return (
     <div className="vertical-menu" style={sideBar ? { width: 80 } : null}>
       {/* <!-- LOGO --> */}
-      <div className="navbar-brand-box">
+      <div className="navbar-brand-box ">
         {!sideBar && (
-          <NavLink to="/dashboard" className="logo logo-dark">
-            <span className="logo-lg text-left font-size-20 text-white">
-              <strong>Treat In Box</strong>
+          <NavLink to="/dashboard" className="logo logo-dark ">
+            <span className="logo-lg text-left font-size-20 text-black">
+              <strong className="fs-4">Treat In Box</strong>
               {/*<img
             alt="img" src={logo} alt="" height="40" style={{ paddingRight: 25 }} /> */}
             </span>
@@ -24,17 +24,17 @@ function Sidebar(props) {
         className="
         btn btn-sm
         px-3
-        text-white
-        font-size-16
+        font-size-20
         header-item
         waves-effect
         vertical-menu-btn
+       
       "
         onClick={() => setSideBar((prev) => !prev)}
       >
         {sideBar ? (
           <span
-            className="logo-sm text-left mr-2 text-white"
+            className="logo-sm text-left mr-2 "
             style={{ fontSize: "1.6rem" }}
           >
             <strong>TIB</strong>
@@ -46,7 +46,7 @@ function Sidebar(props) {
         )}
       </button>
 
-      <div data-simplebar className="sidebar-menu-scroll">
+      <div data-simplebar className="sidebar-menu-scroll border border-top-1">
         {/* <!--- Sidebar Begins --> */}
         <div id="sidebar-menu">
           {/* <!-- Left Menu Start --> */}
@@ -134,14 +134,14 @@ function Sidebar(props) {
             </li>
 
             {!sideBar && (
-              <li className="d-flex  justify-content-between">
-                <div>
+              <li className="d-flex  w-100 justify-content-between1">
+                <div className="w-100 ">
                   <a>
                     <img alt="img" src="/assets/images/icons/cms-icon.png" />
-                    <span>Footer Settings</span>
+                    <span className="">Footer Settings</span>
                   </a>
 
-                  <ul className="sub-menu display-menu">
+                  <ul className="sub-menu1 mx-3 display-menu1">
                     <li>
                       <NavLink to="/social">Social Media</NavLink>
                     </li>

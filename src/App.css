@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -42,30 +43,43 @@
   justify-content: center;
   margin-left: 35%;
 } */
+#sidebar-menu ul li{
+  width: 100% !important;
+}
 #sidebar-menu ul li .active {
-  background-color: #000000 !important;
-  color: #fff;
+  background-color: #D3E1FC!important;
+  color: #2E71F4;
+  border-right: 8px solid #2E71F4;
+ 
+}
+#sidebar-menu ul li ul li {
+  width: 119% !important;
 }
 
 /* order detail box css */
-.card {
-  /* box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%); */
-}
+
+
 .card {
   position: relative;
   display: flex;
+  /* height: 90vh; */
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fdfdfd76;
+  background-color: #fff;
   background-clip: border-box;
   border: 0 solid rgba(203, 20, 20, 0.125);
-  border-radius: 1rem;
 }
+
+.text-muted {
+  font-size: 1.4em;
+}
+
 .text-reset {
   --bs-text-opacity: 1;
   color: inherit !important;
 }
+
 a {
   color: #5465ff;
   text-decoration: none;
@@ -76,4 +90,29 @@ a {
   height: 180px;
   margin-top: 5px;
   border-radius: 5px;
+}
+
+/* for wrapper login */
+.wrapperLogin {
+  background: #F0F6FF;
+  /* height: auto; */
+  min-height: 100vh;
+  height: auto;
+  /* overflow: hidden !important; */
+  align-items: center;
+}
+
+.leftWrapperLogin {}
+
+.loginImage {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.loginImage img {}
+
+.rightWrapperLogin {}
+
+.btn {
+  border-radius: 0px !important;
 }
