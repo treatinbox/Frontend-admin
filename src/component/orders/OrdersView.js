@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
+import Footer from "../Footer";
+
 import OrderDetailBox from "./OrderDetailBox";
 import { formattedData, showToast } from "../error";
 import { ordersViewById } from "./utils";
@@ -156,6 +158,7 @@ function OrdersView(props) {
             </div>
           </div>
         </div>
+        <Footer />
         {/* <!-- container-fluid --> */}
       </div>
     </div>
