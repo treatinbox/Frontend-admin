@@ -88,7 +88,7 @@ function ChangePassword(props) {
                       <li className="breadcrumb-item">
                         <BreadCumb/>
                       </li>
-                      <li className="breadcrumb-item active">Product</li>
+                      <li className="breadcrumb-item active">Reset Password</li>
                     </ol>
                   </div>
                 </div>
