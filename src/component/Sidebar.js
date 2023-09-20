@@ -16,7 +16,8 @@ import { SlSocialDropbox } from "react-icons/sl";
 
 function Sidebar(props) {
   const [sideBar, setSideBar] = useState(false);
-  const applicationName = JSON.parse(localStorage.getItem("application"));
+  const applicationName = JSON.parse(localStorage.getItem('application'))||"Tiffin Mate"
+
 
   return (
     <div className="vertical-menu" style={sideBar ? { width: 80 } : null}>

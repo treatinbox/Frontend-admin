@@ -29,7 +29,7 @@ import FooterApplicationName from "./component/footerSetting/FootetApplicationNa
 import FooterCopyrights from "./component/footerSetting/FooterCopyright";
 
 function App() {
-  const applicationName = JSON.parse(localStorage.getItem("application"));
+  const applicationName = JSON.parse(localStorage.getItem("application"))||"Tiffin Mate";
   document.title = applicationName
 
   return (
