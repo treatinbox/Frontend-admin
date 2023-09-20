@@ -6,6 +6,7 @@ import { isAutheticated } from "../auth/authHelper";
 import Footer from "../Footer";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
+import BreadCumb from "../BreadCumb";
 
 function FooterApplicationName(props) {
   const [State, setState] = useState({
@@ -21,10 +22,17 @@ function FooterApplicationName(props) {
           Authorization: `Bearer ${token}`,
         },
       });
-      setData(res.data?.data);
-      setState({
-        applicationName: res.data?.data[0]?.applicationName,
-      });
+      if(res.status===200){
+        setData(res.data?.data);  
+        localStorage.setItem('application',JSON.stringify(res.data?.data[0]?.applicationName||"Tiffin Mate"))
+        setState({
+          applicationName: res.data?.data[0]?.applicationName,
+        });
+      }
+      else{
+        alert("something error")
+      }
+    
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,7 +75,7 @@ function FooterApplicationName(props) {
         }
       );
       if (res) {
-        // window.location.reload();
+        window.location.reload();
       }
     }
   };
@@ -88,7 +96,7 @@ function FooterApplicationName(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
                       <li className="breadcrumb-item active">
                         Applicaiton Name

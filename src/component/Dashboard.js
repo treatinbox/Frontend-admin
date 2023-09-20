@@ -6,6 +6,7 @@ import Sidebar from "./Sidebar";
 import { isAutheticated } from "./auth/authHelper";
 import axios from "axios";
 import { API_URl } from "./api";
+import BreadCumb from "./BreadCumb";
 
 function Dashboard(props) {
   const { token } = isAutheticated();
@@ -40,7 +41,7 @@ function Dashboard(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
                       <li className="breadcrumb-item active">Dashboard</li>
                     </ol>

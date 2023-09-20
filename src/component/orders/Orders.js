@@ -8,6 +8,7 @@ import { orders } from "./utils";
 import { useState } from "react";
 import { formattedData, showToast } from "../error";
 import LoaderBox from "../utils/LoaderBox";
+import BreadCumb from "../BreadCumb";
 
 function Orders(props) {
   const [products, setProducts] = useState([]);
@@ -42,7 +43,7 @@ function Orders(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
                       <li className="breadcrumb-item active">Orders</li>
                     </ol>

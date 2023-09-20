@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
 import { API_URl } from "../api";
+import BreadCumb from "../BreadCumb";
+import Footer from "../Footer";
 
 function ClientView(props) {
   const { id } = useParams();
@@ -34,14 +36,14 @@ function ClientView(props) {
             <div className="row">
               <div className="col-12">
                 <div className="page-title-box d-flex align-items-center justify-content-between">
-                  <h4 className="mb-0">Client Information</h4>
+                  <h4 className="mb-0">Franchisees Information</h4>
 
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
-                      <li className="breadcrumb-item active">Client</li>
+                      <li className="breadcrumb-item active">Franchisees</li>
                     </ol>
                   </div>
                 </div>
@@ -102,17 +104,18 @@ function ClientView(props) {
                                 .join(" ")}
                             </td>
                           </tr>
+                        
                           <tr>
                             <td width="20%">
-                              <b>Trail End Date</b>
+                              <b>Contact Number</b>
                             </td>
-                            <td>02 Aug 2021</td>
+                            <td>{data?.contactNo}</td>
                           </tr>
                           <tr>
                             <td width="20%">
                               <b>Unique Client ID</b>
                             </td>
-                            <td>1234567890</td>
+                            <td>{data?._id}</td>
                           </tr>
                           <tr>
                             <td width="20%">
@@ -126,30 +129,9 @@ function ClientView(props) {
                             </td>
                             <td>Subscribed/Not Subscribed</td>
                           </tr>
-                          <tr>
-                            <td width="20%">
-                              <b>Subscription Package</b>
-                            </td>
-                            <td>$199</td>
-                          </tr>
-                          <tr>
-                            <td width="20%">
-                              <b>Last Paid Amount</b>
-                            </td>
-                            <td>$199</td>
-                          </tr>
-                          <tr>
-                            <td width="20%">
-                              <b>Last Paid Date</b>
-                            </td>
-                            <td>20 Jul 2021</td>
-                          </tr>
-                          <tr>
-                            <td width="20%">
-                              <b>Next Payment Date</b>
-                            </td>
-                            <td>20 Aug 2021</td>
-                          </tr>
+                       
+                     
+                       
                         </tbody>
                       </table>
                     </div>
@@ -164,16 +146,7 @@ function ClientView(props) {
         </div>
         {/* <!-- End Page-content --> */}
 
-        <footer className="footer">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-sm-12">
-                <script>document.write(new Date().getFullYear())</script> ©
-                SHOTT.
-              </div>
-            </div>
-          </div>
-        </footer>
+   <Footer/>
       </div>
     </div>
   );

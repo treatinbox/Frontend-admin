@@ -7,6 +7,7 @@ import Sidebar from "../Sidebar";
 import { API_URl } from "../api";
 import axios from "axios";
 import LoaderBox from "../utils/LoaderBox";
+import BreadCumb from "../BreadCumb";
 
 function Client(props) {
   const [data, setData] = useState([]);
@@ -15,14 +16,25 @@ function Client(props) {
   const [itemPerPage, setItemPerPage] = useState(10);
   const [showData, setShowData] = useState(data);
   const [loader, setLoader] = useState(true);
-  useEffect(() => {
-    const fetchData = () => {
-      axios.get(`${API_URl}/admin_users`).then((res) => {
-        setData(res.data.data);
-        setLoader(false);
-      });
-    };
 
+
+// delete franchise
+
+const deleteFranchisee = (id)=>{
+  axios.delete(`${API_URl}/admin_users/${id}`).then((res) => {
+    setLoader(false);
+    fetchData()
+  });
+}
+
+
+const fetchData = () => {
+  axios.get(`${API_URl}/admin_users`).then((res) => {
+    setData(res.data.data);
+    setLoader(false);
+  });
+};
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -47,14 +59,14 @@ function Client(props) {
             <div className="row">
               <div className="col-12">
                 <div className="page-title-box d-flex align-items-center justify-content-between">
-                  <h4 className="mb-0">Clients</h4>
+                  <h4 className="mb-0">Franchisees</h4>
 
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
-                      <li className="breadcrumb-item active">Clients</li>
+                      <li className="breadcrumb-item active">Franchisees</li>
                     </ol>
                   </div>
                 </div>
@@ -94,7 +106,7 @@ function Client(props) {
                               className="btn btn-primary add-btn waves-effect waves-light float-right"
                             >
                               <i className="fa fa-plus" aria-hidden="true"></i>{" "}
-                              Add New Client
+                              Add New Franchisee
                             </button>
                           </Link>
                         </div>
@@ -149,6 +161,13 @@ function Client(props) {
                                         View
                                       </button>
                                     </Link>
+                                    <button
+                                    type="button"
+                                    className="btn btn-danger btn-sm  waves-effect waves-light btn-table ml-2"
+                                    onClick={()=>deleteFranchisee(item._id)}
+                                  >
+                                    Delete
+                                  </button>
                                   </td>
                                 </tr>
                               ))}

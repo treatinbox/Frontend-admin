@@ -8,6 +8,7 @@ import OrderDetailBox from "./OrderDetailBox";
 import { formattedData, showToast } from "../error";
 import { ordersViewById } from "./utils";
 import { useState } from "react";
+import BreadCumb from "../BreadCumb";
 
 function OrdersView(props) {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ function OrdersView(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
                       <li className="breadcrumb-item">
                         Orders Management - Orders

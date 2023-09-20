@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { RiDashboardFill } from "react-icons/ri";
 import { SiIledefrancemobilites } from "react-icons/si";
-import { FaBorderStyle,FaProductHunt ,FaHackerNewsSquare,FaUserTag,FaRegCopyright} from "react-icons/fa";
-import { BiSolidContact,BiSolidRename} from "react-icons/bi";
-import { MdEmojiNature,MdAddReaction} from "react-icons/md";
-import { FcSettings} from "react-icons/fc";
-import { SlSocialDropbox} from "react-icons/sl";
-
+import {
+  FaBorderStyle,
+  FaProductHunt,
+  FaHackerNewsSquare,
+  FaUserTag,
+  FaRegCopyright,
+} from "react-icons/fa";
+import { BiSolidContact, BiSolidRename } from "react-icons/bi";
+import { MdEmojiNature, MdAddReaction } from "react-icons/md";
+import { FcSettings } from "react-icons/fc";
+import { SlSocialDropbox } from "react-icons/sl";
 
 function Sidebar(props) {
   const [sideBar, setSideBar] = useState(false);
+  const applicationName = JSON.parse(localStorage.getItem("application"));
 
   return (
     <div className="vertical-menu" style={sideBar ? { width: 80 } : null}>
@@ -19,9 +25,7 @@ function Sidebar(props) {
         {!sideBar && (
           <NavLink to="/dashboard" className="logo logo-dark ">
             <span className="logo-lg text-left font-size-20 text-black">
-              <strong className="fs-4">Treat In Box</strong>
-              {/*<img
-            alt="img" src={logo} alt="" height="40" style={{ paddingRight: 25 }} /> */}
+              <strong className="fs-4">{applicationName}</strong>
             </span>
           </NavLink>
         )}
@@ -127,35 +131,35 @@ function Sidebar(props) {
                     className="sub-menu mx-3 display-menu"
                     style={{ position: "relative", left: "-2em" }}
                   >
-                    <li >
-                      <NavLink to="/social" style={{paddingLeft:"3em"}}>
+                    <li>
+                      <NavLink to="/social" style={{ paddingLeft: "3em" }}>
                         <SlSocialDropbox size={20} />
 
                         <span className="mx-2">Social Media</span>
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/address" style={{paddingLeft:"3em"}}>
+                      <NavLink to="/address" style={{ paddingLeft: "3em" }}>
                         <MdAddReaction size={20} />
                         <span className="mx-2">Address</span>
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/logo" style={{paddingLeft:"3em"}}>
+                      <NavLink to="/logo" style={{ paddingLeft: "3em" }}>
                         <FaUserTag size={20} />
 
                         <span className="mx-2">Logo</span>
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/application" style={{paddingLeft:"3em"}}>
+                      <NavLink to="/application" style={{ paddingLeft: "3em" }}>
                         <BiSolidRename size={20} />
 
                         <span className="mx-2">Application Name</span>
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/copyrights" style={{paddingLeft:"3em"}}>
+                      <NavLink to="/copyrights" style={{ paddingLeft: "3em" }}>
                         <FaRegCopyright size={20} />
 
                         <span className="mx-2">Copyright</span>

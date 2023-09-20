@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { isAutheticated, signout } from "../component/auth/authHelper";
 import Avatar from "react-avatar";
+import { API_URl } from "./api";
 
 function Header(props) {
   const [data, setData] = useState({
@@ -12,7 +13,7 @@ function Header(props) {
   const { token } = isAutheticated();
   useEffect(() => {
     axios
-      .get(`https://api.shoperola.com/admin`, {
+      .get(`${API_URl}/admin`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -30,11 +31,17 @@ function Header(props) {
       });
   }, []);
 
+
   return (
     <header id="page-topbar">
       <div className="navbar-header">
         <div className="d-flex align-items-center ">
           {/* <!-- LOGO --> */}
+          <span className="logo-lg mx-3 text-left font-size-20 text-black">
+            <img src={"./treat.png"} alt="treat" height="50" />
+            {/*<img
+        alt="img" src={logo} alt="" height="40" style={{ paddingRight: 25 }} /> */}
+          </span>
           <div className="navbar-brand-box">
             <a href="/" className="logo logo-light1">
               <span className="logo-sm">
@@ -69,7 +76,7 @@ function Header(props) {
               <Avatar
                 name={data && data.firstName + data.lastName}
                 round={true}
-                size="40"
+                size="36"
                 textSizeRatio={0.5}
               />
             </button>

@@ -7,6 +7,7 @@ import Sidebar from "./Sidebar";
 import { API_URl } from "./api";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import BreadCumb from "./BreadCumb";
 
 function NewsLetters(props) {
   const [newsLetters, setNewsLetters] = useState([]);
@@ -62,7 +63,7 @@ function NewsLetters(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
                       <li className="breadcrumb-item active">
                         Newsletter Subscribers

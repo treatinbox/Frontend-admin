@@ -9,6 +9,7 @@ import { API_URl } from "../api";
 import axios from "axios";
 import Model from "./Model";
 import LoaderBox from "../utils/LoaderBox";
+import BreadCumb from "../BreadCumb";
 
 function Product(props) {
   const [modalShow, setModalShow] = useState(false);
@@ -101,7 +102,7 @@ function Product(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
                       <li className="breadcrumb-item active">Product</li>
                     </ol>

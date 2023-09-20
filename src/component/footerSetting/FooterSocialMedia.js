@@ -6,6 +6,7 @@ import { isAutheticated } from "../auth/authHelper";
 import Footer from "../Footer";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
+import BreadCumb from "../BreadCumb";
 
 function FooterSocialMedia(props) {
   const { token } = isAutheticated();
@@ -110,7 +111,7 @@ function FooterSocialMedia(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
                       <li className="breadcrumb-item active">Social Media</li>
                     </ol>

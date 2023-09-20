@@ -7,6 +7,7 @@ import Sidebar from "./Sidebar";
 import { isAutheticated } from "./auth/authHelper";
 
 import { API_URl } from "./api";
+import BreadCumb from "./BreadCumb";
 
 function HomePageSettings(props) {
   const videoImg =
@@ -202,7 +203,7 @@ function HomePageSettings(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
                       <li className="breadcrumb-item active">
                         Home Page Settings

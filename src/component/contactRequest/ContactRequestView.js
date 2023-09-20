@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { useParams } from "react-router-dom";
+import BreadCumb from "../BreadCumb";
 
 function ContactRequestView(props) {
   const { id } = useParams();
@@ -37,7 +38,7 @@ function ContactRequestView(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <Link to="/">Treat in Box</Link>
+                        <BreadCumb/>
                       </li>
                       <li className="breadcrumb-item">Contact Requests</li>
 

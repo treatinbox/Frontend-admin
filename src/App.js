@@ -29,6 +29,9 @@ import FooterApplicationName from "./component/footerSetting/FootetApplicationNa
 import FooterCopyrights from "./component/footerSetting/FooterCopyright";
 
 function App() {
+  const applicationName = JSON.parse(localStorage.getItem("application"));
+  document.title = applicationName
+
   return (
     <Router>
       <Routes>
