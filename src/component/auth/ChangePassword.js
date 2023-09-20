@@ -68,7 +68,7 @@ function ChangePassword(props) {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  const applicationName = JSON.parse(localStorage.getItem("application"))||"Tiffin Mate";
   return (
     <div>
       <Sidebar />
@@ -105,7 +105,7 @@ function ChangePassword(props) {
                         Welcome Back !
                       </h5>
                       <p className="text-muted">
-                        Reset Password <strong>Treat In Box</strong>
+                        Reset Password <strong>{applicationName}</strong>
                       </p>
                     </div>
                     <div className="p-2 mt-4">
