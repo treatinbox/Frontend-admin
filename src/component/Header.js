@@ -38,7 +38,7 @@ function Header(props) {
         <div className="d-flex align-items-center ">
           {/* <!-- LOGO --> */}
           <span className="logo-lg mx-3 text-left font-size-20 text-black">
-            <img src={"./treat.png"} alt="treat" height="50" />
+            <img src={"/treat.png"} alt="treat" height="50" />
             {/*<img
         alt="img" src={logo} alt="" height="40" style={{ paddingRight: 25 }} /> */}
           </span>

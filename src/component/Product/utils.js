@@ -3,7 +3,7 @@ import { API_URl } from "../api";
 
 const createProduct = async (data) => {
   try {
-    const resp = await axios.post(`${API_URl}/addProduct`, data);
+    const resp = await axios.post(`${API_URl}/api/prod/addProduct`, data);
     return resp;
   } catch (error) {
     alert("Error creating product");

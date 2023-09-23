@@ -6,20 +6,27 @@ import Sidebar from "../Sidebar";
 import { API_URl } from "../api";
 import BreadCumb from "../BreadCumb";
 import Footer from "../Footer";
+import { isAutheticated } from "../auth/authHelper";
 
 function ClientView(props) {
   const { id } = useParams();
-
+  const { token } = isAutheticated();
   const [data, setData] = useState({});
-
   useEffect(() => {
     const fetchData = () => {
-      axios.get(`${API_URl}/admin_users`).then((res) => {
-        const fetchedData = res.data.data;
-        const client = fetchedData.filter((item) => item._id === id)[0];
-        setData(client);
-        console.log(client);
-      });
+      axios
+        .get(`${API_URl}/admin_users/${id}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          // console.log(res.data)
+          // const fetchedData = res.data.data;
+          // const client = fetchedData.filter((item) => item._id === id)[0];
+          setData(res.data);
+          // console.log(client);
+        });
     };
 
     fetchData();
@@ -41,7 +48,7 @@ function ClientView(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <BreadCumb/>
+                        <BreadCumb />
                       </li>
                       <li className="breadcrumb-item active">Franchisees</li>
                     </ol>
@@ -74,64 +81,82 @@ function ClientView(props) {
                     <div className="table-responsive table-shoot">
                       <table className="table table-centered table-nowrap mb-0">
                         <tbody>
+                        <tr>
+                        <td width="20%">
+                          <b>Unique Client ID</b>
+                        </td>
+                        <td>{data?.user?._id}</td>
+                      </tr>
                           <tr>
                             <td width="20%">
                               <b>First Name</b>
                             </td>
-                            <td>{data?.firstName}</td>
+                            <td>{data?.user?.firstName}</td>
                           </tr>
                           <tr>
                             <td width="20%">
                               <b>Last Name</b>
                             </td>
-                            <td>{data?.lastName}</td>
+                            <td>{data?.user?.lastName}</td>
                           </tr>
                           <tr>
                             <td width="20%">
                               <b>Email</b>
                             </td>
-                            <td>{data?.email}</td>
+                            <td>{data?.user?.email}</td>
                           </tr>
                           <tr>
                             <td width="20%">
-                              <b>Joined On</b>
+                              <b>User Name</b>
                             </td>
-                            <td>
-                              {new Date(data?.createdAt)
-                                .toDateString(data?.createdAt)
-                                .split(" ")
-                                .slice(1)
-                                .join(" ")}
-                            </td>
+                            <td>{data?.user?.username}</td>
                           </tr>
-                        
+
                           <tr>
                             <td width="20%">
                               <b>Contact Number</b>
                             </td>
-                            <td>{data?.contactNo}</td>
+                            <td>{data?.address?.contact_number}</td>
+                          </tr>
+                         
+                          <tr>
+                            <td width="20%">
+                              <b>Companay Name</b>
+                            </td>
+                            <td>{data?.address?.company_name}</td>
+                          </tr>
+                          <tr>
+                          <td width="20%">
+                            <b>Country</b>
+                          </td>
+                          <td>{data?.address?.country}</td>
+                        </tr>
+                          <tr>
+                            <td width="20%">
+                              <b>State</b>
+                            </td>
+                            <td>{data?.address?.state}</td>
                           </tr>
                           <tr>
                             <td width="20%">
-                              <b>Unique Client ID</b>
+                              <b>City</b>
                             </td>
-                            <td>{data?._id}</td>
+                            <td>{data?.address?.city}</td>
                           </tr>
                           <tr>
                             <td width="20%">
-                              <b>Unique URL</b>
+                              <b>Address</b>
                             </td>
-                            <td>https://play.Treat in Box.com/1234</td>
+                            <td>{data?.address?.AdminAddress}</td>
                           </tr>
                           <tr>
                             <td width="20%">
-                              <b>Subscription Status</b>
+                              <b>Pin Code</b>
                             </td>
-                            <td>Subscribed/Not Subscribed</td>
+                            <td>{data?.address?.pincode}</td>
                           </tr>
-                       
+                    
                      
-                       
                         </tbody>
                       </table>
                     </div>
@@ -146,7 +171,7 @@ function ClientView(props) {
         </div>
         {/* <!-- End Page-content --> */}
 
-   <Footer/>
+        <Footer />
       </div>
     </div>
   );

@@ -43,15 +43,17 @@
   justify-content: center;
   margin-left: 35%;
 } */
-#sidebar-menu ul li{
+#sidebar-menu ul li {
   width: 100% !important;
 }
+
 #sidebar-menu ul li .active {
-  background-color: #D3E1FC!important;
+  background-color: #D3E1FC !important;
   color: #2E71F4;
   border-right: 8px solid #2E71F4;
- 
+
 }
+
 #sidebar-menu ul li ul li {
   width: 133% !important;
 }
@@ -62,7 +64,6 @@
 .card {
   position: relative;
   display: flex;
-  /* height: 90vh; */
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;

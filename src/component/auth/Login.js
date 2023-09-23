@@ -95,24 +95,23 @@ function Login(props) {
       history("/");
     } else {
       if (token) {
-        // history("/dashboard");
+        history("/dashboard");
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <div className="wrapperLogin ">
       <div className="container  mx-auto h-100 row flex-wrap align-items-center pt-sm-5">
         <div className="leftWrapperLogin text-center col-lg-6">
           <div className="loginContentWithImage mt-4">
             <div className="textLogin"></div>
-            <h5 className="text-primary fs-3">Treat Box Welcomes You!</h5>
+            <h5 className="text-primary fs-3">
+            <strong>Admin Login</strong>
+            </h5>
             <div className="loginCOntent">
               <p>
-                At Treat Box, we're all about bringing joy to your taste buds.
-                Whether it's delectable snacks, gourmet treats, or delightful
-                surprises, we've got something special in store for you.
+            Access the Tiffin Mate control center to manage franchisees, dishes, and orders with ease
               </p>
             </div>
             <div className="loginImage">
@@ -153,12 +152,7 @@ function Login(props) {
                         </div>
                       </div>
 
-                      <div className="text-center ">
-                        <p className="text-muted">
-                          Sign In to{" "}
-                          <strong className="text-primary">Treat In Box</strong>
-                        </p>
-                      </div>
+                    
                       <div className="p-2 ">
                         {!forgotPassword ? (
                           <form>

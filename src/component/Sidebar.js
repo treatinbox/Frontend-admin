@@ -22,7 +22,7 @@ function Sidebar(props) {
   return (
     <div className="vertical-menu" style={sideBar ? { width: 80 } : null}>
       {/* <!-- LOGO --> */}
-      <div className="navbar-brand-box ">
+      <div className="navbar-brand-box border border-bottom-1">
         {!sideBar && (
           <NavLink to="/dashboard" className="logo logo-dark ">
             <span className="logo-lg text-left font-size-20 text-black">
@@ -59,7 +59,7 @@ function Sidebar(props) {
         )}
       </button>
 
-      <div data-simplebar className="sidebar-menu-scroll border border-top-1">
+      <div data-simplebar className="sidebar-menu-scroll ">
         {/* <!--- Sidebar Begins --> */}
         <div id="sidebar-menu">
           {/* <!-- Left Menu Start --> */}

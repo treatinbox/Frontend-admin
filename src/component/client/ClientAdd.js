@@ -7,6 +7,13 @@ import Footer from "../Footer";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
 import BreadCumb from "../BreadCumb";
+import { showToast } from "../error";
+import {
+  CitySelect,
+  CountrySelect,
+  StateSelect,
+} from "react-country-state-city";
+import "react-country-state-city/dist/react-country-state-city.css";
 
 function ClientAdd(props) {
   const { token } = isAutheticated();
@@ -33,8 +40,6 @@ function ClientAdd(props) {
     last_name: "",
     email: "",
     password: "",
-    store_name: "",
-    industry: "",
     company_name: "",
     country: "",
     state: "",
@@ -54,6 +59,7 @@ function ClientAdd(props) {
   };
 
   const handleSubmit = () => {
+
     axios
       .post(`${API_URl}/signup`, {
         firstName: data.first_name,
@@ -63,12 +69,11 @@ function ClientAdd(props) {
       })
       .then(async (res) => {
         const token = res.data?.token;
-
         const store_data = await axios.put(
           `${API_URl}/api/user`,
           {
-            store_name: data.store_name,
-            industry: data.industry,
+            store_name: "a",
+            industry: "a",
           },
           {
             headers: {
@@ -87,6 +92,7 @@ function ClientAdd(props) {
             country: data.country,
             pincode: data.pincode,
             contact_number: data.contact_number,
+            id:res.data.user?._id
           },
           {
             headers: {
@@ -96,14 +102,16 @@ function ClientAdd(props) {
         );
 
         if (store_data && address_data) {
-          console.log("Success");
-          history.push("/client");
+          history("/client");
         }
       })
       .catch((error) => {
-        console.log(error);
+        showToast("missing", error?.response?.data?.message, "error");
       });
   };
+
+  const [countryid, setCountryid] = useState(0);
+  const [stateid, setstateid] = useState(0);
 
   return (
     <div>
@@ -121,9 +129,11 @@ function ClientAdd(props) {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <BreadCumb/>
+                        <BreadCumb />
                       </li>
-                      <li className="breadcrumb-item active">Add Franchisees</li>
+                      <li className="breadcrumb-item active">
+                        Add Franchisees
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -137,7 +147,9 @@ function ClientAdd(props) {
                   <div className="card-body">
                     <div className="row">
                       <div className="col-md-12 col-lg-9 col-xl-7">
-                        <h1 className="text-left head-small">Add Client</h1>
+                        <h1 className="text-left head-small">
+                          Add Franchisees
+                        </h1>
                         <form>
                           <div className="row">
                             <div className="col-lg-12">
@@ -215,52 +227,6 @@ function ClientAdd(props) {
                               </div>
                             </div>
                           </div>
-                          <div className="row">
-                            <div className="col-lg-12">
-                              <div className="form-group">
-                                <label
-                                  htmlFor="basicpill-phoneno-input"
-                                  className="label-100"
-                                >
-                                  Store Name
-                                </label>
-                                <input
-                                  value={data.store_name}
-                                  name="store_name"
-                                  onChange={handleEdit}
-                                  type="text"
-                                  className="form-control input-field"
-                                />
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="row">
-                            <div className="col-lg-12">
-                              <div className="form-group">
-                                <label
-                                  htmlFor="basicpill-phoneno-input"
-                                  className="label-100"
-                                >
-                                  Which Industry will the client be operating
-                                  in?
-                                </label>
-                                <select
-                                  name="industry"
-                                  value={data.industry}
-                                  className="form-control input-field"
-                                  onChange={handleEdit}
-                                >
-                                  <option value="">--select--</option>
-                                  {industries.map((item, idx) => (
-                                    <option value={item} key={idx}>
-                                      {item}
-                                    </option>
-                                  ))}
-                                </select>
-                              </div>
-                            </div>
-                          </div>
 
                           <div className="row">
                             <div className="col-lg-12">
@@ -291,12 +257,13 @@ function ClientAdd(props) {
                                 >
                                   Country
                                 </label>
-                                <input
-                                  value={data.country}
-                                  name="country"
-                                  onChange={handleEdit}
-                                  type="text"
-                                  className="form-control input-field"
+
+                                <CountrySelect
+                                  onChange={(e) => {
+                                    setCountryid(e.id);
+                                    setData({ ...data, country: e.name });
+                                  }}
+                                  placeHolder="Select Country"
                                 />
                               </div>
                             </div>
@@ -311,12 +278,14 @@ function ClientAdd(props) {
                                 >
                                   State
                                 </label>
-                                <input
-                                  value={data.state}
-                                  name="state"
-                                  onChange={handleEdit}
-                                  type="text"
-                                  className="form-control input-field"
+
+                                <StateSelect
+                                  countryid={countryid}
+                                  onChange={(e) => {
+                                    setstateid(e.id);
+                                    setData({ ...data, state: e.name });
+                                  }}
+                                  placeHolder="Select State"
                                 />
                               </div>
                             </div>
@@ -331,12 +300,14 @@ function ClientAdd(props) {
                                 >
                                   City
                                 </label>
-                                <input
-                                  value={data.city}
-                                  name="city"
-                                  onChange={handleEdit}
-                                  type="text"
-                                  className="form-control input-field"
+
+                                <CitySelect
+                                  countryid={countryid}
+                                  stateid={stateid}
+                                  onChange={(e) => {
+                                    setData({ ...data, city: e.name });
+                                  }}
+                                  placeHolder="Select City"
                                 />
                               </div>
                             </div>

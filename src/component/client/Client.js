@@ -8,32 +8,50 @@ import { API_URl } from "../api";
 import axios from "axios";
 import LoaderBox from "../utils/LoaderBox";
 import BreadCumb from "../BreadCumb";
+import { isAutheticated } from "../auth/authHelper";
 
 function Client(props) {
   const [data, setData] = useState([]);
-
+  const { token } = isAutheticated();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemPerPage, setItemPerPage] = useState(10);
   const [showData, setShowData] = useState(data);
   const [loader, setLoader] = useState(true);
 
+  // delete franchise
 
-// delete franchise
+  const deleteFranchisee = (id) => {
+    axios.delete(`${API_URl}/admin_users/${id}`).then((res) => {
+      setLoader(false);
+      fetchData();
+    });
+  };
 
-const deleteFranchisee = (id)=>{
-  axios.delete(`${API_URl}/admin_users/${id}`).then((res) => {
-    setLoader(false);
-    fetchData()
-  });
-}
+  const suspendFranchise = (email,id) => {
+    axios
+      .post(
+        `${API_URl}/admin_users_suspend/${id}`,
+        {email:email},
+        {
+          headers: {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        }
+      )
+      .then((res) => {
+        setLoader(false);
+        fetchData();
+      });
+  };
 
-
-const fetchData = () => {
-  axios.get(`${API_URl}/admin_users`).then((res) => {
-    setData(res.data.data);
-    setLoader(false);
-  });
-};
+  const fetchData = () => {
+    axios.get(`${API_URl}/admin_users`).then((res) => {
+      setData(res.data.data);
+      setLoader(false);
+    });
+  };
   useEffect(() => {
     fetchData();
   }, []);
@@ -64,7 +82,7 @@ const fetchData = () => {
                   <div className="page-title-right">
                     <ol className="breadcrumb m-0">
                       <li className="breadcrumb-item">
-                        <BreadCumb/>
+                        <BreadCumb />
                       </li>
                       <li className="breadcrumb-item active">Franchisees</li>
                     </ol>
@@ -149,9 +167,12 @@ const fetchData = () => {
                                   <td>
                                     <button
                                       type="button"
-                                      className="btn btn-success btn-sm  waves-effect waves-light btn-table"
+                                      className={`btn ${item?.suspend?"btn-danger":"btn-success"} btn-sm  waves-effect waves-light btn-table`}
+                                      onClick={() =>
+                                        suspendFranchise(item?.email,item?._id)
+                                      }
                                     >
-                                      Suspend
+                                      {!item?.suspend?"Suspend":"UnSuspend"}
                                     </button>
                                     <Link to={`/client/view/${item._id}`}>
                                       <button
@@ -162,12 +183,12 @@ const fetchData = () => {
                                       </button>
                                     </Link>
                                     <button
-                                    type="button"
-                                    className="btn btn-danger btn-sm  waves-effect waves-light btn-table ml-2"
-                                    onClick={()=>deleteFranchisee(item._id)}
-                                  >
-                                    Delete
-                                  </button>
+                                      type="button"
+                                      className="btn btn-danger btn-sm  waves-effect waves-light btn-table ml-2"
+                                      onClick={() => deleteFranchisee(item._id)}
+                                    >
+                                      Delete
+                                    </button>
                                   </td>
                                 </tr>
                               ))}
