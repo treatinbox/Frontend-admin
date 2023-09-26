@@ -12039,12 +12039,14 @@ button.bg-purple:hover {
 }
 
 .text-primary {
-    color: #5b73e8 !important
+    color: #CEAB2E !important
+    /* color: #5b73e8 !important */
 }
 
 a.text-primary:focus,
 a.text-primary:hover {
-    color: #1e3ed8 !important
+    /* color: #1e3ed8 !important */
+    color: #f4c827b4 !important
 }
 
 .text-secondary {

@@ -117,7 +117,7 @@ function Login(props) {
             <div className="loginImage">
               <img
                 className="img-size"
-                src="/assets/images/login.png"
+                src="/assets/images/login12.png"
                 alt="login"
               />
             </div>

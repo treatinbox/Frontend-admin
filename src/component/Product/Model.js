@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import { createProduct, fetchProduct, updateProduct } from "./utils";
+import { ClipLoader } from "react-spinners";
 export default function Model({
   show,
   closeModel,
@@ -18,24 +19,36 @@ export default function Model({
     qty: "",
     image: "",
   });
+  const[loader,setLoader] = useState(false)
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProductData({ ...productData, [name]: value });
   };
 
+// handle image
+const handleImageChange = (event) => {
+  const value = event.target.files[0]
+  console.log(value)
+  setProductData({ ...productData, image: value });
+
+}
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoader(true)
     const { title, description, price, qty } = productData;
     // Do something with the productData object
     if (title && description && price && qty) {
       const resp = await createProduct(productData);
       if (resp.status === 201) {
-        alert("suucessfully added product");
+        // alert("suucessfully added product");
         setReload(Math.random());
         closeModel();
+        setLoader(false)
       } else {
         alert("something error!");
+        setLoader(false)
       }
       // Reset form fields
       setProductData({
@@ -45,32 +58,37 @@ export default function Model({
         qty: "",
       });
     } else {
+      setLoader(false)
       alert("all field are field required!");
     }
   };
 
   const handleUpdate = async (event) => {
     event.preventDefault();
+    setLoader(true)
     const { title, description, price, qty } = productData;
     // Do something with the productData object
     if (title && description && price && qty) {
       const resp = await updateProduct(id, productData);
       if (resp.status === 200) {
-        alert("suucessfully updated product");
+        // alert("suucessfully updated product");
         setReload(Math.random());
         closeModel();
+        setLoader(false)
       } else {
         alert("something error!");
+        setLoader(false)
       }
     } else {
       alert("all field are field required!");
+      setLoader(false)
     }
   };
 
   async function getProduct() {
     const resp = await fetchProduct(id);
-    const { title, description, price, qty } = resp.data;
-    setProductData({ title, description, price, qty });
+    const { title, description, price, qty ,image} = resp.data;
+    setProductData({ title, description, price, qty,image });
   }
 
   useEffect(() => {
@@ -79,13 +97,14 @@ export default function Model({
     } else if (text === "Update") {
       async function uptProduct() {
         const resp = await fetchProduct(id);
-        const { title, description, price, qty } = resp.data;
-        setProductData({ title, description, price, qty });
+        const { title, description, price, qty ,image} = resp.data;
+        setProductData({ title, description, price, qty,image });
       }
       uptProduct();
     } else {
       return;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -152,15 +171,14 @@ export default function Model({
             <Form.Control
               type="file"
               name="image"
-              value={productData.image}
-              onChange={handleInputChange}
+              onInput={(e) => handleImageChange(e)}
               disabled={disable}
             />
             <img
               className="mt-2"
               style={{ width: "4em" }}
               src={
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnfBD8oiQixFsc59ccAI4fSbIBvvTjUEZuw&usqp=CAU"
+               productData.image|| "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnfBD8oiQixFsc59ccAI4fSbIBvvTjUEZuw&usqp=CAU"
               }
               alt="img"
             />
@@ -172,13 +190,15 @@ export default function Model({
           Close
         </Button>
         <Button
-          disabled={disable}
+          disabled={disable || loader}
           variant="success"
           onClick={(event) =>
             text === "Create" ? handleSubmit(event) : handleUpdate(event)
           }
         >
-          {text}
+        {
+          loader?<ClipLoader color={"#fff"} loading={loader} size={20} />  :text
+        }
         </Button>
       </Modal.Footer>
     </Modal>

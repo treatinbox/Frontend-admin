@@ -171,7 +171,8 @@ body:not(.vertical-collpsed) .app-search {
 }
 
 .page-content {
-  background-color: #E9F1FE  ;
+  /* background-color: #E9F1FE  ; */
+  background-color: #f5f2d2  ;
   height:100vh;
   overflow: scroll;
   padding: calc(70px + 20px) calc(20px / 2) 60px calc(20px / 2);
@@ -3248,8 +3249,10 @@ a.ck.ck-button:not(.ck-disabled):hover {
 }
 
 .table-rep-plugin .btn-group .btn-default.btn-primary {
-  background-color: #5b73e8;
-  border-color: #5b73e8;
+  background-color: #E7B735 !important;
+  border-color: #ffcd42e8 !important;
+  /* background-color: #5b73e8;
+  border-color: #5b73e8; */
   color: #fff;
   -webkit-box-shadow: 0 0 0 2px rgba(91, 115, 232, 0.5);
   box-shadow: 0 0 0 2px rgba(91, 115, 232, 0.5);
