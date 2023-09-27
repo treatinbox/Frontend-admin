@@ -137,6 +137,7 @@ function FooterLogo(props) {
                                 <button
                                   onClick={handleSubmit}
                                   type="button"
+                                  disabled={true}
                                   className="btn btn-success btn-login waves-effect waves-light mr-3"
                                 >
                                   Save

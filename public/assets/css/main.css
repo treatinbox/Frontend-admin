@@ -171,8 +171,7 @@ body:not(.vertical-collpsed) .app-search {
 }
 
 .page-content {
-  /* background-color: #E9F1FE  ; */
-  background-color: #f5f2d2  ;
+  background-color: #E9F1FE  ;
   height:100vh;
   overflow: scroll;
   padding: calc(70px + 20px) calc(20px / 2) 60px calc(20px / 2);

@@ -48,13 +48,13 @@
 }
 
 #sidebar-menu ul li .active {
-  background-color: #FCFAD3 !important;
+  /* background-color: #FCFAD3 !important;
   color: #9E7E0C;
-  border-right: 8px solid #F4E02E;
+  border-right: 8px solid #F4E02E; */
 
-  /* background-color: #D3E1FC !important;
+  background-color: #D3E1FC !important;
   color: #2E71F4;
-  border-right: 8px solid #2E71F4; */
+  border-right: 8px solid #2E71F4;
 
 }
 
@@ -63,7 +63,7 @@
 }
 
 /* order detail box css */
-
+/* 
 .text-primary{
   color: #CEAB2E !important;
 }
@@ -72,7 +72,7 @@
   background-color: #E7B735 !important;
   border-color: #ffcd42e8 !important;
 
-}
+} */
 .card {
   position: relative;
   display: flex;

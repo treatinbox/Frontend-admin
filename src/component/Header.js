@@ -37,11 +37,7 @@ function Header(props) {
       <div className="navbar-header">
         <div className="d-flex align-items-center ">
           {/* <!-- LOGO --> */}
-          <span className="logo-lg mx-3 text-left font-size-20 text-black">
-            <img src={"/treat.png"} alt="treat" height="50" />
-            {/*<img
-        alt="img" src={logo} alt="" height="40" style={{ paddingRight: 25 }} /> */}
-          </span>
+       
           <div className="navbar-brand-box">
             <a href="/" className="logo logo-light1">
               <span className="logo-sm">

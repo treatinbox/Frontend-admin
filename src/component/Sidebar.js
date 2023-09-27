@@ -26,7 +26,10 @@ function Sidebar(props) {
         {!sideBar && (
           <NavLink to="/dashboard" className="logo logo-dark ">
             <span className="logo-lg text-left font-size-20 text-black">
-              <strong className="fs-4">{applicationName}</strong>
+
+              <img src={"/treat.png"} alt="treat" height="50" />
+
+
             </span>
           </NavLink>
         )}
